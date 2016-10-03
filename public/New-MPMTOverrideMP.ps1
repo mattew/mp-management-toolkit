@@ -1,6 +1,25 @@
 
 function New-MPMTOverrideMP
 {
+    <# 
+    .SYNOPSIS 
+    Creates a new management pack to store overrides. 
+    .DESCRIPTION 
+    This command take a sealed management and creates a matching empty management pack to store overrides.
+    The new management pack has the same name and ID, with the addition of the word override, and the same version as
+    as the sealed management pack. 
+    .EXAMPLE 
+    Get-Item C:\temp\Microsoft.SQLServer.2014.Monitoring.mp | New-MPMTOverrideMP 
+    .EXAMPLE 
+    Get-Item C:\temp\Microsoft.SQLServer.2014.Monitoring.mp | New-MPMTOverrideMP -outputDir C:\temp\overrideMPs\ 
+    .EXAMPLE 
+    Get-ChildItem C:\temp\ -Filter *.mp | New-MPMTOverrideMP -outputDir C:\temp\overrideMPs\
+    .PARAMETER ManagementPack
+    The management pack to create an override pack for. It can be a single file or a collection (via the pipeline).
+    .PARAMETER outputDir
+    The output folder where the override mp is to be saved. If no outputDir is supplied it will be written to the current dir.
+    #> 
+
     [CmdletBinding()]
     param(
         [Parameter(

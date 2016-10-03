@@ -1,6 +1,25 @@
 
 function New-MPMTConfigDoc 
 {
+    <# 
+    .SYNOPSIS 
+    This command creates a config document for the management pack. It's an excel file with all the classes, monitors, 
+    discoveries and rules defined in the management pack. 
+    .DESCRIPTION 
+    This command creates a config document for the management pack. It's an excel file with all the classes, monitors, 
+    discoveries and rules defined in the management pack. 
+    .EXAMPLE 
+    Get-Item C:\temp\Microsoft.SQLServer.2014.Monitoring.mp | New-MPMTConfigDoc 
+    .EXAMPLE 
+    Get-Item C:\temp\Microsoft.SQLServer.2014.Monitoring.mp | New-MPMTConfigDoc -outputDir C:\temp\overrideMPs\ 
+    .EXAMPLE 
+    Get-ChildItem C:\temp\ -Filter *.mp | New-MPMTConfigDoc -outputDir C:\temp\overrideMPs\
+    .PARAMETER ManagementPack
+    The management pack to create a config document for. It can be a single file or a collection (via the pipeline).
+    .PARAMETER outputDir
+    The output folder where the config document is to be saved. If no outputDir is supplied it will be written to the current dir.
+    #> 
+
     [CmdletBinding()]
     param(
         [Parameter(
